@@ -6,12 +6,16 @@
 // 3. Paste URL di bawah ini
 
 const CONFIG = {
-    // URL Google Apps Script Web App untuk Data Kerja SUB
+    // URL Google Apps Script Web App untuk LOAD DATA (doGet)
     // Format: https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
     // 
     // INSTRUKSI:
-    // - Ganti URL di bawah dengan URL Apps Script Data Kerja SUB Anda
+    // - URL ini digunakan untuk MENGAMBIL data dari spreadsheet "Data Kerja SUB"
     // - Pastikan Apps Script sudah di-deploy sebagai Web App dengan akses "Anyone"
+    // - Pastikan Apps Script memiliki fungsi doGet() untuk membaca data
+    // - URL ini BISA SAMA dengan URL untuk submit data (detail-input-config.js)
     // - Lihat contoh script di: docs/google-apps-script-example.js
-    APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzm0Cp4HF-paSv6nim07mImY45BZpcpuBa9i3UZUl7X1Oulaf-3G4TyujgiTIsvsbnY/exec'
+    // 
+    // CATATAN: Menggunakan URL yang sama dengan submit data karena 1 deployment bisa handle doGet dan doPost
+    APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwtyiB8VVcmb838PrC5Px9Kdf7uwn5yurG56YtKCE2rRgqUTJy-4WOSvJeLn6kHsCuL/exec'
 };

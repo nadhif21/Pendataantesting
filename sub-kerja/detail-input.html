@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Input Detail KB - BKKBN WAY KANDIS</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <link rel="stylesheet" href="../pendataan/styles.css">
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--card-background);
+            margin: auto;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: var(--text-color);
+            font-size: 24px;
+        }
+
+        .close {
+            color: var(--text-light);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .close:hover {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .detail-info {
+            background: var(--background-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .detail-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .detail-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-info-label {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .detail-info-value {
+            color: var(--text-light);
+            text-align: right;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+
+        .form-group label.required::after {
+            content: " *";
+            color: var(--danger-color);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .radio-option:hover {
+            border-color: var(--primary-color);
+            background: rgba(74, 144, 226, 0.05);
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .form-group.hidden {
+            display: none;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .btn-cancel {
+            background: var(--border-color);
+            color: var(--text-color);
+        }
+
+        .btn-cancel:hover {
+            background: #d0d0d0;
+        }
+
+        .table-row-clickable {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .table-row-clickable:hover {
+            background-color: rgba(74, 144, 226, 0.1) !important;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../homepage.html" style="text-decoration: none; color: inherit;">
+                <h1>📝 Input Detail KB dari Data Kerja</h1>
+            </a>
+        </header>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Cari data (Nama Kader, Nama KK, Nama Istri, dll)..." 
+                    autocomplete="off"
+                >
+                <button id="clearSearch" class="clear-btn" style="display: none;" title="Hapus pencarian">✕</button>
+            </div>
+            <div class="search-info">
+                <span id="resultCount"></span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="filter-group">
+                <label for="kaderSelect" style="font-weight: 600; margin-right: 10px;">👤 Filter Kader:</label>
+                <select id="kaderSelect" class="kader-select">
+                    <option value="">Semua Kader</option>
+                </select>
+            </div>
+            <button id="refreshBtn" class="btn btn-primary">🔄 Refresh Data</button>
+            <div class="loading" id="loading" style="display: none;">
+                <span class="spinner"></span>
+                <span>Memuat data...</span>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+        <div class="success-message" id="successMessage"></div>
+
+        <div class="data-container">
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead>
+                        <tr id="tableHeader">
+                            <!-- Header akan diisi oleh JavaScript -->
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data akan diisi oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <p>📭 Tidak ada data untuk ditampilkan</p>
+            </div>
+        </div>
+
+        <footer>
+        </footer>
+    </div>
+
+    <!-- Modal untuk Detail dan Form Input -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📋 Detail Data & Input KB</h2>
+                <button class="close" id="closeModal">&times;</button>
+            </div>
+            
+            <div class="detail-info" id="detailInfo">
+                <!-- Detail data akan diisi oleh JavaScript -->
+            </div>
+
+            <form id="kbForm">
+                <div class="form-group">
+                    <label class="required">Status KB:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="pesertaKB" name="statusKB" value="Peserta KB" required>
+                            <label for="pesertaKB">Peserta KB</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="bukanPesertaKB" name="statusKB" value="Bukan Peserta KB" required>
+                            <label for="bukanPesertaKB">Bukan Peserta KB</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pilihan untuk Peserta KB -->
+                <div class="form-group hidden" id="pesertaKBGroup">
+                    <label class="required">Jenis KB:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="iud" name="jenisKB" value="IUD">
+                            <label for="iud">IUD</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="mop" name="jenisKB" value="MOP">
+                            <label for="mop">MOP</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="mow" name="jenisKB" value="MOW">
+                            <label for="mow">MOW</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="imp" name="jenisKB" value="IMP">
+                            <label for="imp">IMP</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="stk" name="jenisKB" value="STK">
+                            <label for="stk">STK</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="pil" name="jenisKB" value="PIL">
+                            <label for="pil">PIL</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pilihan untuk Bukan Peserta KB -->
+                <div class="form-group hidden" id="bukanPesertaKBGroup">
+                    <label class="required">Kategori:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="kdm" name="kategori" value="KDM">
+                            <label for="kdm">KDM</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="hamil" name="kategori" value="HAMIL">
+                            <label for="hamil">HAMIL</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="ias" name="kategori" value="IAS">
+                            <label for="ias">IAS</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="iat" name="kategori" value="IAT">
+                            <label for="iat">IAT</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="tial" name="kategori" value="TIAL">
+                            <label for="tial">TIAL</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Keterangan (Optional) -->
+                <div class="form-group">
+                    <label for="keterangan">Keterangan (Opsional):</label>
+                    <textarea id="keterangan" name="keterangan" placeholder="Masukkan keterangan tambahan jika diperlukan..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-cancel" id="cancelBtn">Batal</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Kirim Data</button>
+                </div>
+                
+                <!-- Info untuk data yang sudah di-input -->
+                <div id="existingDataInfo" style="display: none; background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #ffc107;">
+                    <p style="margin: 0; color: #856404; font-weight: 600;">ℹ️ Data sudah pernah di-input. Anda dapat mengubah data dengan mengisi form di atas dan klik "Update Data".</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="sub-work-config.js"></script>
+    <script src="detail-input-config.js"></script>
+    <script src="detail-input-app.js"></script>
+</body>
+</html>
