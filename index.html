@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BKKBN Kelurahan Way Kandis</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="assets/bkkbn/homepage-styles.css">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <div class="welcome-section">
+                <div class="bkkbn-logo">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="bkkbn-vector">
+                        <!-- Background Circle -->
+                        <circle cx="100" cy="100" r="95" fill="#00ADB5" opacity="0.1"/>
+                        
+                        <!-- Family Silhouette - Father -->
+                        <g transform="translate(50, 80)">
+                            <!-- Head -->
+                            <circle cx="0" cy="0" r="12" fill="#222831"/>
+                            <!-- Body -->
+                            <rect x="-8" y="12" width="16" height="35" rx="8" fill="#222831"/>
+                            <!-- Arms -->
+                            <line x1="-8" y1="20" x2="-20" y2="35" stroke="#222831" stroke-width="4" stroke-linecap="round"/>
+                            <line x1="8" y1="20" x2="20" y2="35" stroke="#222831" stroke-width="4" stroke-linecap="round"/>
+                            <!-- Legs -->
+                            <line x1="-5" y1="47" x2="-5" y2="65" stroke="#222831" stroke-width="4" stroke-linecap="round"/>
+                            <line x1="5" y1="47" x2="5" y2="65" stroke="#222831" stroke-width="4" stroke-linecap="round"/>
+                        </g>
+                        
+                        <!-- Family Silhouette - Mother -->
+                        <g transform="translate(100, 75)">
+                            <!-- Head -->
+                            <circle cx="0" cy="0" r="11" fill="#222831"/>
+                            <!-- Body (dress) -->
+                            <path d="M -10 12 L -10 50 L 0 45 L 10 50 L 10 12 Z" fill="#222831"/>
+                            <!-- Arms -->
+                            <line x1="-10" y1="18" x2="-18" y2="32" stroke="#222831" stroke-width="3.5" stroke-linecap="round"/>
+                            <line x1="10" y1="18" x2="18" y2="32" stroke="#222831" stroke-width="3.5" stroke-linecap="round"/>
+                            <!-- Legs -->
+                            <line x1="-3" y1="50" x2="-3" y2="65" stroke="#222831" stroke-width="3.5" stroke-linecap="round"/>
+                            <line x1="3" y1="50" x2="3" y2="65" stroke="#222831" stroke-width="3.5" stroke-linecap="round"/>
+                        </g>
+                        
+                        <!-- Family Silhouette - Child -->
+                        <g transform="translate(150, 95)">
+                            <!-- Head -->
+                            <circle cx="0" cy="0" r="9" fill="#222831"/>
+                            <!-- Body -->
+                            <rect x="-6" y="9" width="12" height="22" rx="6" fill="#222831"/>
+                            <!-- Arms -->
+                            <line x1="-6" y1="15" x2="-14" y2="25" stroke="#222831" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="6" y1="15" x2="14" y2="25" stroke="#222831" stroke-width="3" stroke-linecap="round"/>
+                            <!-- Legs -->
+                            <line x1="-3" y1="31" x2="-3" y2="42" stroke="#222831" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="3" y1="31" x2="3" y2="42" stroke="#222831" stroke-width="3" stroke-linecap="round"/>
+                        </g>
+                        
+                        <!-- Heart Symbol (representing family love) -->
+                        <path d="M 100 120 L 95 115 Q 90 110 90 105 Q 90 100 95 100 Q 100 100 100 105 Q 100 100 105 100 Q 110 100 110 105 Q 110 110 105 115 Z" 
+                              fill="#00ADB5" opacity="0.6"/>
+                        
+                        <!-- Decorative Elements -->
+                        <circle cx="30" cy="50" r="3" fill="#00ADB5" opacity="0.4"/>
+                        <circle cx="170" cy="50" r="3" fill="#00ADB5" opacity="0.4"/>
+                        <circle cx="30" cy="150" r="3" fill="#00ADB5" opacity="0.4"/>
+                        <circle cx="170" cy="150" r="3" fill="#00ADB5" opacity="0.4"/>
+                    </svg>
+                </div>
+                <h2>Selamat Datang</h2>
+                <p>Sistem Informasi BKKBN Kelurahan Way Kandis</p>
+                
+                <div class="divisi-selector">
+                    <label for="divisiSelect">📋 Pilih Divisi:</label>
+                    <select id="divisiSelect" class="divisi-select">
+                        <option value="tpk">TPK - Tim Pendamping Keluarga</option>
+                        <option value="sub">SUB - Sub Tim</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="cards-container" id="cardsContainer">
+                <!-- Cards akan diupdate secara dinamis -->
+            </div>
+        </main>
+
+        <footer>
+        </footer>
+    </div>
+
+    <!-- Script harus di-load berurutan: config dulu, baru app -->
+    <script src="assets/bkkbn/homepage-config.js"></script>
+    <script>
+        // Pastikan config sudah ter-load sebelum app.js
+        if (typeof BKKBN_CONFIG === 'undefined') {
+            console.error('Error: BKKBN_CONFIG tidak ditemukan. Pastikan homepage-config.js sudah ter-load.');
+        }
+    </script>
+    <script src="assets/bkkbn/homepage-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data TPK - BKKBN WAY KANDIS</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <link rel="stylesheet" href="../pendataan/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../homepage.html" style="text-decoration: none; color: inherit;">
+                <h1>📊 Jumlah Pendampingan Kelompok Sasaran Status 2026</h1>
+            </a>
+        </header>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Cari data" 
+                    autocomplete="off"
+                >
+                <button id="clearSearch" class="clear-btn" style="display: none;" title="Hapus pencarian">✕</button>
+            </div>
+            <div class="search-info">
+                <span id="resultCount"></span>
+            </div>
+        </div>
+
+        <div class="filter-container" style="padding: 20px; background: var(--background-color); border-bottom: 1px solid var(--border-color);">
+            <div class="filter-group" style="display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap; justify-content: center;">
+                <div class="filter-item" style="display: flex; flex-direction: column; gap: 8px;">
+                    <label for="timSelect" style="font-weight: 600; color: var(--text-color); font-size: 14px;">TIM:</label>
+                    <select id="timSelect" class="category-select" style="min-width: 150px;">
+                        <option value="">Semua TIM</option>
+                        <option value="TIM 1">TIM 1</option>
+                        <option value="TIM 2">TIM 2</option>
+                        <option value="TIM 3">TIM 3</option>
+                        <option value="TIM 4">TIM 4</option>
+                        <option value="TIM 5">TIM 5</option>
+                        <option value="TIM 6">TIM 6</option>
+                        <option value="TIM 7">TIM 7</option>
+                    </select>
+                </div>
+                <div class="filter-item" style="display: flex; flex-direction: column; gap: 8px;">
+                    <label for="bulanSelect" style="font-weight: 600; color: var(--text-color); font-size: 14px;">Bulan:</label>
+                    <select id="bulanSelect" class="category-select" style="min-width: 180px;">
+                        <option value="">Semua Bulan</option>
+                        <option value="Januari">Januari</option>
+                        <option value="Februari">Februari</option>
+                        <option value="Maret">Maret</option>
+                        <option value="April">April</option>
+                        <option value="Mei">Mei</option>
+                        <option value="Juni">Juni</option>
+                        <option value="Juli">Juli</option>
+                        <option value="Agustus">Agustus</option>
+                        <option value="September">September</option>
+                        <option value="Oktober">Oktober</option>
+                        <option value="November">November</option>
+                        <option value="Desember">Desember</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="refreshBtn" class="btn btn-primary">🔄 Refresh Data</button>
+            <div class="loading" id="loading" style="display: none;">
+                <span class="spinner"></span>
+                <span>Memuat data...</span>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+        <div class="data-container">
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead>
+                        <tr id="tableHeader">
+                            <!-- Header akan diisi oleh JavaScript -->
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data akan diisi oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <p>📭 Tidak ada data untuk ditampilkan</p>
+            </div>
+        </div>
+
+        <footer>
+        </footer>
+    </div>
+
+    <script src="tpk-data-config.js"></script>
+    <script src="tpk-data-app.js"></script>
+</body>
+</html>

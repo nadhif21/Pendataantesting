@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data SUB - BKKBN WAY KANDIS</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <link rel="stylesheet" href="../pendataan/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../homepage.html" style="text-decoration: none; color: inherit;">
+                <h1>📊 Data Akseptor Sub PPKBD Kelurahan Way Kandis</h1>
+            </a>
+        </header>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Cari data (Nama Kader, Nama Akseptor, NIK, dll)..." 
+                    autocomplete="off"
+                >
+                <button id="clearSearch" class="clear-btn" style="display: none;" title="Hapus pencarian">✕</button>
+            </div>
+            <div class="search-info">
+                <span id="resultCount"></span>
+            </div>
+        </div>
+
+        <div class="filter-container" style="padding: 20px; background: var(--background-color); border-bottom: 1px solid var(--border-color);">
+            <div class="filter-group" style="display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap; justify-content: center;">
+                <div class="filter-item" style="display: flex; flex-direction: column; gap: 8px;">
+                    <label for="kaderSelect" style="font-weight: 600; color: var(--text-color); font-size: 14px;">Nama Kader:</label>
+                    <select id="kaderSelect" class="category-select" style="min-width: 250px;">
+                        <option value="">Semua Kader</option>
+                        <option value="Tri Murtini">Tri Murtini</option>
+                        <option value="Mauzun">Mauzun</option>
+                        <option value="Utami Budiarti">Utami Budiarti</option>
+                        <option value="Erniati">Erniati</option>
+                        <option value="Prihatmi">Prihatmi</option>
+                        <option value="Nurmaya Sari">Nurmaya Sari</option>
+                        <option value="Rumiyati">Rumiyati</option>
+                        <option value="Suparti">Suparti</option>
+                        <option value="Nuke Yuni Astuti">Nuke Yuni Astuti</option>
+                        <option value="Reni Puspita Sari">Reni Puspita Sari</option>
+                        <option value="Malinda Jatinirwana">Malinda Jatinirwana</option>
+                        <option value="Elizabeth Thlia Frastika">Elizabeth Thlia Frastika</option>
+                        <option value="Siswati">Siswati</option>
+                        <option value="Noviyana">Noviyana</option>
+                        <option value="Bena Suntari">Bena Suntari</option>
+                        <option value="Ana Raufa">Ana Raufa</option>
+                        <option value="Marhama Yuli">Marhama Yuli</option>
+                        <option value="Elsa Bellina">Elsa Bellina</option>
+                        <option value="Vika Feriana">Vika Feriana</option>
+                        <option value="Desma Zelvia">Desma Zelvia</option>
+                        <option value="Nevi Herawati">Nevi Herawati</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="refreshBtn" class="btn btn-primary">🔄 Refresh Data</button>
+            <div class="loading" id="loading" style="display: none;">
+                <span class="spinner"></span>
+                <span>Memuat data...</span>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+        <div class="data-container">
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead>
+                        <tr id="tableHeader">
+                            <!-- Header akan diisi oleh JavaScript -->
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data akan diisi oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <p>📭 Tidak ada data untuk ditampilkan</p>
+            </div>
+        </div>
+
+        <footer>
+        </footer>
+    </div>
+
+    <script src="sub-team-config.js"></script>
+    <script src="sub-team-app.js"></script>
+</body>
+</html>

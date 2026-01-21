@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BKKBN WAY KANDIS</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+        </header>
+
+        <div class="category-filter">
+            <label for="categorySelect">📋 Pilih Kategori:</label>
+            <select id="categorySelect" class="category-select">
+                <option value="baduta">Baduta dan Balita</option>
+                <option value="ibu-hamil">Ibu Hamil</option>
+            </select>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Cari data (Nama Ibu, NIK, Jenis KB, dll)..." 
+                    autocomplete="off"
+                >
+                <button id="clearSearch" class="clear-btn" style="display: none;" title="Hapus pencarian">✕</button>
+            </div>
+            <div class="search-info">
+                <span id="resultCount"></span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="refreshBtn" class="btn btn-primary">🔄 Refresh Data</button>
+            <div class="loading" id="loading" style="display: none;">
+                <span class="spinner"></span>
+                <span>Memuat data...</span>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+        <div class="data-container">
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead>
+                        <tr id="tableHeader">
+                            <!-- Header akan diisi oleh JavaScript -->
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data akan diisi oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <p>📭 Tidak ada data untuk ditampilkan</p>
+            </div>
+        </div>
+
+        <footer>
+        </footer>
+    </div>
+
+    <script src="data-config.js"></script>
+    <script src="data-app.js"></script>
+</body>
+</html>
